@@ -1,6 +1,19 @@
 package polymorphism;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component("tv")
 public class LgTV implements TV{
+	//@Autowired
+	//@Qualifier("apple")
+	
+	@Resource(name="apple")
+	private Speaker speaker;
+	
 
 	//ctrl+space 기본생성자
 	public LgTV() {
@@ -21,12 +34,14 @@ public class LgTV implements TV{
 
 	@Override
 	public void volumeUp() {
+		speaker.volumeUp();
 		System.out.println("LgTV---소리 올린다.");
 		
 	}
 
 	@Override
 	public void volumeDown() {
+		speaker.volumeDown();
 		System.out.println("LgTV---소리 내린다.");
 		
 	}

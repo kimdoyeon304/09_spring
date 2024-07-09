@@ -11,24 +11,19 @@ public class TVUser {
 				new GenericXmlApplicationContext("applicationContext.xml");
 		
 		TV tv1 = (TV)factory.getBean("tv");
-		TV tv2 = (TV)factory.getBean("tv");
-		TV tv3 = (TV)factory.getBean("tv");
+		//TV tv2 = (TV)factory.getBean("tv");
+		//TV tv3 = (TV)factory.getBean("tv");
 		
 		tv1.powerOn();
 		tv1.volumeUp();
 		tv1.volumeDown();
 		tv1.powerOff();
 	
-		tv2.powerOn();
-		tv2.volumeUp();
-		tv2.volumeDown();
-		tv2.powerOff();
-		
-		tv3.powerOn();
-		tv3.volumeUp();
-		tv3.volumeDown();
-		tv3.powerOff();
-		
+		/*
+		 * tv2.powerOn(); tv2.volumeUp(); tv2.volumeDown(); tv2.powerOff();
+		 * 
+		 * tv3.powerOn(); tv3.volumeUp(); tv3.volumeDown(); tv3.powerOff();
+		 */
 		factory.close();
 		
 		
