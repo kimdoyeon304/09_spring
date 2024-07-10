@@ -3,15 +3,73 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 
 
 	<context:component-scan base-package="polymorphism"></context:component-scan>
 	<bean class="polymorphism.SonySpeaker" />
 	
-	<!-- <bean id="tv" class="polymorphism.SamsungTV" p:speaker-ref="sony" p:price="270000"> init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" scope="prototype"
+	<context:component-scan base-package="com.springbook.biz" />
+	
+	
+	<!-- <bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
+	
+	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO" /> -->
+	
+	
+
+	
+	<!-- <bean id="log" class="com.springbook.biz.common.LogAdvice"></bean>
+	<bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean> -->
+	<bean id="before" class="com.springbook.biz.common.BeforeAdvice" />
+	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice" />
+	<bean id="afterThrowing" class="com.springbook.biz.common.AfterThrowingAdvice" />
+	<bean id="after" class="com.springbook.biz.common.AfterAdvice" />
+	<bean id="around" class="com.springbook.biz.common.AroundAdvice" />
+	
+	
+	<aop:config>
+		<aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))" />
+		<aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))" />
+		
+		<!-- <aop:aspect ref="log">
+			<aop:before pointcut-ref="allPointcut" method="printLog" />
+			<aop:before pointcut-ref="allPointcut" method="printLogging" />
+			<aop:before pointcut-ref="getPointcut" method="printLog" />
+			<aop:after pointcut-ref="getPointcut" method="printLog" />
+		</aop:aspect> -->
+		
+		<aop:aspect ref="before">
+			<aop:before pointcut-ref="allPointcut" method="beforeLog" />
+		</aop:aspect>
+		
+		<aop:aspect ref="afterReturning">
+			<aop:after-returning pointcut-ref="getPointcut" method="afterLog" />
+		</aop:aspect>
+		
+		<aop:aspect ref="afterThrowing">
+			<aop:after-throwing pointcut-ref="allPointcut" method="exceptionLog" />
+		</aop:aspect>
+		
+		<aop:aspect ref="after">
+			<aop:after pointcut-ref="allPointcut" method="finallyLog" />
+		</aop:aspect>
+		
+		<aop:aspect ref="around">
+			<aop:around pointcut-ref="allPointcut" method="aroundLog" />
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
+
+
+<!-- <bean id="tv" class="polymorphism.SamsungTV" p:speaker-ref="sony" p:price="270000"> init-method="initMethod" destroy-method="destroyMethod" lazy-init="true" scope="prototype"
 	 -->	
 		<!-- <constructor-arg index="0" ref="sony"></constructor-arg>
 		<constructor-arg index="1" value="270000"></constructor-arg> 
@@ -60,4 +118,4 @@
 			</props>
 		</property>
 	</bean>  -->
-</beans>
+
