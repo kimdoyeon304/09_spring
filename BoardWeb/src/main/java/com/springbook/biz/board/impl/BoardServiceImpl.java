@@ -14,7 +14,8 @@ import com.springbook.biz.common.LogAdvice;
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired
-	private BoardDAO boardDAO;
+	//private BoardDAO boardDAO;
+	private BoardDAOSpring boardDAO;
 	//private LogAdvice log;
 	//private Log4jAdvice log;
 	
@@ -33,7 +34,7 @@ public class BoardServiceImpl implements BoardService{
 		//log.printLogging();
 		
 //		if(vo.getSeq() == 0) {
-//			throw new IllegalArgumentException("0¹ø ±ÛÀº µî·ÏÇÒ ¼ö ¾ø½À´Ï´Ù.");
+//			throw new IllegalArgumentException("0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 //		}
 		boardDAO.insertBoard(vo);
 		

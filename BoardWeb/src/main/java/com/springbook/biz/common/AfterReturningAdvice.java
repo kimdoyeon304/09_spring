@@ -1,8 +1,32 @@
 package com.springbook.biz.common;
 
-public class AfterReturningAdvice {
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Service;
 
-	public void afterLog() {
-		System.out.println("[»çÈÄ Ã³¸®] ºñÁî´Ï½º ·ÎÁ÷ ¼öÇà ÈÄ µ¿ÀÛ");
+import com.springbook.biz.user.UserVO;
+
+@Service
+@Aspect
+public class AfterReturningAdvice {
+	
+	@Pointcut("execution(* com.springbook.biz..*Impl.get*(..))")
+	public void getPointcut() {}
+
+	@AfterReturning(pointcut="getPointcut()", returning="returnObj")
+	public void afterLog(JoinPoint jp, Object returnObj) {
+		String method = jp.getSignature().getName();
+		
+		if(returnObj instanceof UserVO) {
+			UserVO user = (UserVO)returnObj;
+			if(user.getRole().equals("admin")) {
+				System.out.println(user.getName() + "ë¡œê·¸ì¸(Admin)");
+			}
+		}
+		
+		//System.out.println("[ì‚¬í›„ ì²˜ë¦¬] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ í›„ ë™ì‘");
+		System.out.println("[ì‚¬í›„ ì²˜ë¦¬] " + method + "() ë©”ì†Œë“œ ë¦¬í„´ê°’ : " + returnObj.toString());
 	}
 }

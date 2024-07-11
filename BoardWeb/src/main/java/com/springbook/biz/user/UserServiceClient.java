@@ -6,25 +6,25 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class UserServiceClient {
 
 	public static void main(String[] args) {
-		//1. StringÄÁÅ×ÀÌ³Ê¸¦ ±¸µ¿ÇÑ´Ù
+		//1. Stringì»¨í…Œì´ë„ˆë¥¼ êµ¬ë™í•œë‹¤
 		AbstractApplicationContext container = new GenericXmlApplicationContext("applicationContext.xml");
 		
-		//2. Spring ÄÁÅ×ÀÌ³Ê·ÎºÎÅÍ UserServiceImpl °´Ã¼¸¦ LookupÇÑ´Ù
+		//2. Spring ì»¨í…Œì´ë„ˆë¡œë¶€í„° UserServiceImpl ê°ì²´ë¥¼ Lookupí•œë‹¤
 		UserService userService = (UserService)container.getBean("userService");
 		
-		//3. ·Î±×ÀÎ ±â´É Å×½ºÆ®
+		//3. ë¡œê·¸ì¸ ê¸°ëŠ¥ í…ŒìŠ¤íŠ¸
 		UserVO vo = new UserVO();
 		vo.setId("test");
-		vo.setPassword("test123");
+		vo.setPassword("test1234");
 		
 		UserVO user = userService.getUser(vo);
 		if(user != null) {
-			System.out.println(user.getName() + "´Ô È¯¿µÇÕ´Ï´Ù");
+			System.out.println(user.getName() + "ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤");
 		}else {
-			System.out.println("·Î±×ÀÎ ½ÇÆĞ");
+			System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨");
 		}
 		
-		//4. Spring ÄÁÅ×ÀÌ³Ê¸¦ Á¾·áÇÑ´Ù
+		//4. Spring ì»¨í…Œì´ë„ˆë¥¼ ì¢…ë£Œí•œë‹¤
 		container.close();
 	}
 }

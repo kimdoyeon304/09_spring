@@ -15,52 +15,52 @@ public class LgTV implements TV{
 	private Speaker speaker;
 	
 
-	//ctrl+space ±âº»»ı¼ºÀÚ
+	//ctrl+space ê¸°ë³¸ìƒì„±ì
 	public LgTV() {
-		System.out.println("========> LgTV °´Ã¼ »ı¼º");
+		System.out.println("========> LgTV ê°ì²´ ìƒì„±");
 	}
 	
 	@Override
 	public void powerOn() {
-		System.out.println("LgTV---Àü¿ø ÄÒ´Ù.");
+		System.out.println("LgTV---ì „ì› ì¼ ë‹¤.");
 		
 	}
 
 	@Override
 	public void powerOff() {
-		System.out.println("LgTV---Àü¿ø ²ö´Ù.");
+		System.out.println("LgTV---ì „ì› ëˆë‹¤.");
 		
 	}
 
 	@Override
 	public void volumeUp() {
 		speaker.volumeUp();
-		System.out.println("LgTV---¼Ò¸® ¿Ã¸°´Ù.");
+		System.out.println("LgTV---ì†Œë¦¬ ì˜¬ë¦°ë‹¤.");
 		
 	}
 
 	@Override
 	public void volumeDown() {
 		speaker.volumeDown();
-		System.out.println("LgTV---¼Ò¸® ³»¸°´Ù.");
+		System.out.println("LgTV---ì†Œë¦¬ ë‚´ë¦°ë‹¤.");
 		
 	}
 
 	/*
 	public void turnOn() {
-		System.out.println("LgTV---Àü¿ø ÄÒ´Ù.");
+		System.out.println("LgTV---ì „ì› ì¼ ë‹¤.");
 	}
 	
 	public void turnOff() {
-		System.out.println("LgTV---Àü¿ø ²ö´Ù.");
+		System.out.println("LgTV---ì „ì› ëˆë‹¤.");
 	}
 	
 	public void soundUp() {
-		System.out.println("LgTV---¼Ò¸® ¿Ã¸°´Ù.");
+		System.out.println("LgTV---ì†Œë¦¬ ì˜¬ë¦°ë‹¤.");
 	}
 	
 	public void soundDown() {
-		System.out.println("LgTV---¼Ò¸® ³»¸°´Ù.");
+		System.out.println("LgTV---ì†Œë¦¬ ë‚´ë¦°ë‹¤.");
 	}
 	*/
 	

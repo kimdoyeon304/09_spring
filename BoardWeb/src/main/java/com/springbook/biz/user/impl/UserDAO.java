@@ -13,19 +13,19 @@ import com.springbook.biz.user.UserVO;
 @Repository("userDAO")
 public class UserDAO{
 
-	//JDBC °ü·Ã º¯¼ö
+	//JDBC ê´€ë ¨ ë³€ìˆ˜
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
-	//SQL¸í·É¾îµé
+	//SQLëª…ë ¹ì–´ë“¤
 	private final String USER_GET = "select * from users where id=? and password=?";
 	
-	//CRUD ±â´ÉÀÇ ¸Þ¼Òµå ±¸Çö
+	//CRUD ê¸°ëŠ¥ì˜ ë©”ì†Œë“œ êµ¬í˜„
 	public UserVO getUser(UserVO vo) {
 		UserVO user = null;
 		try {
-			System.out.println("===> JDBC·Î getUser() ±â´É Ã³¸®");
+			System.out.println("===> JDBCë¡œ getUser() ê¸°ëŠ¥ ì²˜ë¦¬");
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(USER_GET);
 			stmt.setString(1, vo.getId());

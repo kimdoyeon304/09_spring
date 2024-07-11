@@ -2,8 +2,8 @@ package com.springbook.biz.user;
 
 public interface UserService {
 
-	//CRUD ±â´ÉÀÇ ¸Ş¼Òµå ±¸Çö
-	//È¸¿øµî·Ï
+	//CRUD ê¸°ëŠ¥ì˜ ë©”ì†Œë“œ êµ¬í˜„
+	//íšŒì›ë“±ë¡
 	public UserVO getUser(UserVO vo);
 
 }

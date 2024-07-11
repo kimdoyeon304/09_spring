@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 public class SamsungTV implements TV{
 
 	/*
-	 * public void initMethod() { System.out.println("°´Ã¼ ÃÊ±âÈ­ ÀÛ¾÷ Ã³¸®"); }
+	 * public void initMethod() { System.out.println("ê°ì²´ ì´ˆê¸°í™” ì‘ì—… ì²˜ë¦¬"); }
 	 * 
-	 * public void destroyMethod() { System.out.println("°´Ã¼ »èÁ¦ Àü¿¡ Ã³¸®ÇÒ ·ÎÁ÷ Ã³¸®"); }
+	 * public void destroyMethod() { System.out.println("ê°ì²´ ì‚­ì œ ì „ì— ì²˜ë¦¬í•  ë¡œì§ ì²˜ë¦¬"); }
 	 */
 	
 	//private SonySpeaker speaker;
@@ -16,48 +16,48 @@ public class SamsungTV implements TV{
 	private int price;
 	
 	
-	//ctrl+space ±âº»»ı¼ºÀÚ, ¹¬½ÃÀû»ı¼ºÀÚ
+	//ctrl+space ê¸°ë³¸ìƒì„±ì, ë¬µì‹œì ìƒì„±ì
 	public SamsungTV() {
-		System.out.println("========> SamsungTV1 °´Ã¼ »ı¼º");
+		System.out.println("========> SamsungTV1 ê°ì²´ ìƒì„±");
 	}
 	
 	/*
-	//¸í½ÃÀû»ı¼ºÀÚ
+	//ëª…ì‹œì ìƒì„±ì
 	public SamsungTV(Speaker speaker) {
-		System.out.println("========> SamsungTV2 °´Ã¼ »ı¼º");
+		System.out.println("========> SamsungTV2 ê°ì²´ ìƒì„±");
 		this.speaker = speaker;
 	}
 
 	
 
 	public SamsungTV(Speaker speaker, int price) {
-		System.out.println("========> SamsungTV3 °´Ã¼ »ı¼º");
+		System.out.println("========> SamsungTV3 ê°ì²´ ìƒì„±");
 		this.speaker = speaker;
 		this.price = price;
 	}
 */
 
 	public void setSpeaker(Speaker speaker) {
-		System.out.println("===> setSpeaker() È£Ãâ");
+		System.out.println("===> setSpeaker() í˜¸ì¶œ");
 		this.speaker = speaker;
 	}
 
 
 	public void setPrice(int price) {
-		System.out.println("===> setPrice() È£Ãâ");
+		System.out.println("===> setPrice() í˜¸ì¶œ");
 		this.price = price;
 	}
 	
 	@Override
 	public void powerOn() {
-		System.out.println("SamsungTV---Àü¿ø ÄÒ´Ù. (°¡°İ : " + price + ")");
+		System.out.println("SamsungTV---ì „ì› ì¼ ë‹¤. (ê°€ê²© : " + price + ")");
 		
 	}
 
 
 	@Override
 	public void powerOff() {
-		System.out.println("SamsungTV---Àü¿ø ²ö´Ù.");
+		System.out.println("SamsungTV---ì „ì› ëˆë‹¤.");
 		
 	}
 
@@ -66,7 +66,7 @@ public class SamsungTV implements TV{
 		//speaker = new SonySpeaker();
 		speaker.volumeUp();
 		
-		//System.out.println("SamsungTV---¼Ò¸® ¿Ã¸°´Ù.");
+		//System.out.println("SamsungTV---ì†Œë¦¬ ì˜¬ë¦°ë‹¤.");
 		
 	}
 
@@ -75,26 +75,26 @@ public class SamsungTV implements TV{
 		//speaker = new SonySpeaker();
 		speaker.volumeDown();
 		
-		//System.out.println("SamsungTV---¼Ò¸® ³»¸°´Ù.");
+		//System.out.println("SamsungTV---ì†Œë¦¬ ë‚´ë¦°ë‹¤.");
 		
 	}
 
 	/*
 	public void powerOn() {
 		
-		System.out.println("SamsungTV---Àü¿ø ÄÒ´Ù.");
+		System.out.println("SamsungTV---ì „ì› ì¼ ë‹¤.");
 	}
 	
 	public void powerOff() {
-		System.out.println("SamsungTV---Àü¿ø ²ö´Ù.");
+		System.out.println("SamsungTV---ì „ì› ëˆë‹¤.");
 	}
 	
 	public void volumeUp() {
-		System.out.println("SamsungTV---¼Ò¸® ¿Ã¸°´Ù.");
+		System.out.println("SamsungTV---ì†Œë¦¬ ì˜¬ë¦°ë‹¤.");
 	}
 	
 	public void volumeDown() {
-		System.out.println("SamsungTV---¼Ò¸® ³»¸°´Ù.");
+		System.out.println("SamsungTV---ì†Œë¦¬ ë‚´ë¦°ë‹¤.");
 	}
 	*/
 	

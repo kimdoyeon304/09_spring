@@ -1,13 +1,36 @@
 package com.springbook.biz.common;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StopWatch;
 
+@Service
+@Aspect
 public class AroundAdvice {
 
+	@Pointcut("execution(* com.springbook.biz..*Impl.*(..))")
+	public void allPointcut() {}
+	
+	@Around("allPointcut()")
 	public Object aroundLog(ProceedingJoinPoint pjp) throws Throwable{
-		System.out.println("[BEFORE]: ºñÁî´Ï½º ¸Ş¼Òµå ¼öÇà Àü¿¡ Ã³¸®ÇÒ ³»¿ë...");
-		Object returnObj = pjp.proceed();
-		System.out.println("[AFTER]: ºñÁî´Ï½º ¸Ş¼Òµå ¼öÇà ÈÄ¿¡ Ã³¸®ÇÒ ³»¿ë...");
-		return returnObj;
+//		System.out.println("[BEFORE]: ë¹„ì¦ˆë‹ˆìŠ¤ ë©”ì†Œë“œ ìˆ˜í–‰ ì „ì— ì²˜ë¦¬í•  ë‚´ìš©...");
+//		Object returnObj = pjp.proceed();
+//		System.out.println("[AFTER]: ë¹„ì¦ˆë‹ˆìŠ¤ ë©”ì†Œë“œ ìˆ˜í–‰ í›„ì— ì²˜ë¦¬í•  ë‚´ìš©...");
+//		return returnObj;
+		
+		String method = pjp.getSignature().getName();
+		
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start();
+		
+		Object obj = pjp.proceed();
+		
+		stopWatch.stop();
+		System.out.println(method + "() ë©”ì†Œë“œ ìˆ˜í–‰ì— ê±¸ë¦° ì‹œê°„ : "+ stopWatch.getTotalTimeMillis() + "(ms)ì´ˆ");
+		
+		return obj;
 	}
 }

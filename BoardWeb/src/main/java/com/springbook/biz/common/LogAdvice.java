@@ -1,8 +1,26 @@
 package com.springbook.biz.common;
 
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Service;
+
+@Service
 public class LogAdvice {
 
-	public void printLog() {
-		System.out.println("[°øÅë ·Î±×] ºñÁî´Ï½º ·ÎÁ÷ ¼öÇà Àü µ¿ÀÛ");
-	}
+//	public void printLog(JoinPoint jp) {
+//		System.out.println("[ê³µí†µ ë¡œê·¸] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ ì „ ë™ì‘");
+//	}
+	
+//	@Pointcut("execution(* com.springbook.biz..*Impl.*(..))")
+//	public void allPointcut() {}
+//	
+//	@Pointcut("execution(* com.springbook.biz..*Impl.get*(..))")
+//	public void getPointcut() {}
+//	
+//	
+//	@Before("allPointcut()")
+//	public void printLog() {
+//		System.out.println("[ê³µí†µ ë¡œê·¸] ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ ìˆ˜í–‰ ì „ ë™ì‘");
+//	}
+	
 }
