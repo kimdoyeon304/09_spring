@@ -14,10 +14,11 @@ import com.springbook.biz.common.LogAdvice;
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired
-	private BoardDAO boardDAO;
+	//private BoardDAO boardDAO;
 	//private BoardDAOSpring boardDAO;
 	//private LogAdvice log;
 	//private Log4jAdvice log;
+	private BoardDAOMybatis boardDAO;
 	
 //	public BoardServiceImpl() {
 //		log = new LogAdvice();
