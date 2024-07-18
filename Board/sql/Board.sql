@@ -12,4 +12,5 @@ insert into lbi_board(title, content, writer) values ('테스트 제목', '테스트 내�
 
 commit;
 
+drop table lbi_board;
 select * from lbi_board;
