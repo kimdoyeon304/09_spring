@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lbi.model.BoardVO;
+import com.lbi.model.Criteria;
+import com.lbi.model.PageMakerDTO;
 import com.lbi.service.BoardService;
 
 @Controller
@@ -22,11 +24,22 @@ public class BoardController {
    private BoardService bservice;
    
    //게시판 목록 페이지 접속
-   @GetMapping("/list")
+   //@GetMapping("/list")
    // @RequestMapping(value="list", method=RequestMethod.GET)
-   public void boardListGET(Model model) {
-      log.info("게시판 목록 페이지 진입");
-      model.addAttribute("list", bservice.getList());
+//   public void boardListGET(Model model) {
+//      log.info("게시판 목록 페이지 진입");
+//      model.addAttribute("list", bservice.getList());
+//   }
+   
+   //게시판 목록 페이지 접속(페이징 적용)
+   @GetMapping("/list")
+   public void boardListGET(Model model, Criteria cri) {
+	   log.info("boardListGET");
+	   model.addAttribute("list", bservice.getListPaging(cri));
+	   
+	   int total = bservice.getTotal(cri);
+	   PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+	   model.addAttribute("pageMaker", pageMake);
    }
    
    @GetMapping("/enroll")
@@ -64,4 +77,14 @@ public class BoardController {
 	   rttr.addFlashAttribute("result", "modify success");
 	   return "redirect:/board/list";
    }
+   
+   //페이지삭제
+   @PostMapping("/delete")
+   public String boardDeletePOST(int bno, RedirectAttributes rttr) {
+	   bservice.delete(bno);
+	   rttr.addFlashAttribute("result", "delete success");
+	   return "redirect:/board/list";
+   }
+   
+   
 }

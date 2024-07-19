@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.lbi.mapper.BoardMapper;
 import com.lbi.model.BoardVO;
+import com.lbi.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -59,17 +60,34 @@ public class BoardMapperTest {
 //	}
 	
 	//게시판 수정 테스트
-	@Test
-	public void testModify() {
-		
-		BoardVO board = new BoardVO();
-		board.setBno(6); //result:1 게시판번호 존재o
-		board.setBno(60); //result:0 게시판번호 존재x
-		board.setTitle("수정 제목");
-		board.setContent("수정 내용");
-		
-		int result = mapper.modify(board);
-		log.info("result : "+result);
-	}
+//	@Test
+//	public void testModify() {
+//		
+//		BoardVO board = new BoardVO();
+//		board.setBno(6); //result:1 게시판번호 존재o
+//		board.setBno(60); //result:0 게시판번호 존재x
+//		board.setTitle("수정 제목");
+//		board.setContent("수정 내용");
+//		
+//		int result = mapper.modify(board);
+//		log.info("result : "+result);
+//	}
+	
+	//게시판 삭제 테스트
+//	@Test
+//	public void testDelete() {
+//		int result = mapper.delete(23);
+//		log.info("result : "+result);
+//	}
 
+	//게시판 목록(페이징 적용) 테스트
+	@Test
+	public void testGetListPaging() {
+		Criteria cri = new Criteria();
+		
+		//cri.setPageNum(2);
+		
+		List list = mapper.getListPaging(cri);
+		list.forEach(board -> log.info(""+board));
+	}
 }

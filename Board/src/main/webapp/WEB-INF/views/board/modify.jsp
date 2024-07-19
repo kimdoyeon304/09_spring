@@ -53,6 +53,10 @@ padding-left: 80px;
 margin-top: 50px;
 }
 
+#delete_btn{
+background-color: #f3e3e7;
+}
+
 </style>
 </head>
 <body>
@@ -85,12 +89,15 @@ margin-top: 50px;
 <div class="btn_wrap">
 <a class="btn" id="list_btn">목록 페이지</a>
 <a class="btn" id="modify_btn">수정 하기</a>
+<a class="btn" id="delete_btn">삭제</a>
 <a class="btn" id="cancel_btn">수정 취소</a>
 </div>
 </form>
 
 <form id="infoForm" action="/board/modify" method="get">
 <input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno }"/>'>
+<input type="hidden" name="keyword" value="${cri.keyword}">
+<input type="hidden" name="type" value="${cri.type}">
 </form>
 
 
@@ -113,6 +120,13 @@ margin-top: 50px;
 	//취소버튼
 	$("#cancel_btn").on("click", function(e){
 		form.attr("action", "/board/get");
+		form.submit();
+	});
+	
+	//삭제버튼
+	$("#delete_btn").on("click", function(e){
+		form.attr("action", "/board/delete");
+		form.attr("method", "post");
 		form.submit();
 	});
 	
