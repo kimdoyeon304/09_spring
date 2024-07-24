@@ -19,3 +19,5 @@ insert into book_member
 values('admin23', 'admin','admin','admin','admin','admin','admin',1,sysdate,1000000,1000000);
 
 commit;
+
+select * from book_member;
